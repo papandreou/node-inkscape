@@ -1,0 +1,45 @@
+node-inkscape
+=============
+
+The inkscape command line utility as a readable/writable stream. This
+is handy for situations where you don't want to worry about writing
+the input to disc and reading the output afterwards.
+
+The constructor optionally takes an array of command line options for
+the `inkscape` binary:
+
+```javascript
+var Inkscape = require('inkscape'),
+    svgToPdfConverter = new Inkscape(['--export-pdf', '--export-width=1024']);
+
+sourceStream.pipe(svgToPdfConverter).pipe(destinationStream);
+```
+
+Inkscape as a web service (converts to a PNG):
+
+```javascript
+var Inkscape = require('inkscape'),
+    http = require('http');
+
+http.createServer(function (req, res) {
+    if (req.headers['content-type'] === 'image/svg') {
+        res.writeHead(200, {'Content-Type': 'image/png'});
+        req.pipe(new Inkscape(['-e'])).pipe(res);
+    } else {
+        res.writeHead(400);
+        res.end('Feed me an SVG!');
+    }
+}).listen(1337);
+```
+
+Installation
+------------
+
+Make sure you have node.js and npm installed, and that the `inkscape` binary is in your PATH, then run:
+
+    npm install inkscape
+
+License
+-------
+
+3-clause BSD license -- see the `LICENSE` file for details.
