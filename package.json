@@ -7,6 +7,7 @@
         "test": "test"
     },
     "dependencies": {
+        "async": "=0.2.9",
         "gettemporaryfilepath": "=0.0.1"
     },
     "devDependencies": {
