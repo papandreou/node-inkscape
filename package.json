@@ -1,38 +1,38 @@
 {
-    "name": "inkscape",
-    "version": "0.0.3",
-    "description": "The inkscape utility as a readable/writable stream",
-    "main": "lib/Inkscape.js",
-    "directories": {
-        "test": "test"
-    },
-    "dependencies": {
-        "async": "=0.2.9",
-        "gettemporaryfilepath": "=0.0.1"
-    },
-    "devDependencies": {
-        "mocha": "=1.7.3",
-        "expect.js": "=0.2.0"
-    },
-    "scripts": {
-        "prepublish": "mocha",
-        "test": "mocha"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/papandreou/node-inkscape.git"
-    },
-    "keywords": [
-        "inkscape",
-        "scg",
-        "png",
-        "image",
-        "optimization",
-        "stream",
-        "filter",
-        "read/write",
-        "duplex"
-    ],
-    "author": "Andreas Lind Petersen <andreas@one.com>",
-    "license": "BSD"
+  "name": "inkscape",
+  "version": "0.0.3",
+  "description": "The inkscape utility as a readable/writable stream",
+  "main": "lib/Inkscape.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "async": "=0.2.9",
+    "gettemporaryfilepath": "=0.0.1"
+  },
+  "devDependencies": {
+    "mocha": "=1.7.3",
+    "expect.js": "=0.2.0"
+  },
+  "scripts": {
+    "prepublish": "mocha",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/papandreou/node-inkscape.git"
+  },
+  "keywords": [
+    "inkscape",
+    "scg",
+    "png",
+    "image",
+    "optimization",
+    "stream",
+    "filter",
+    "read/write",
+    "duplex"
+  ],
+  "author": "Andreas Lind Petersen <andreas@one.com>",
+  "license": "BSD"
 }
