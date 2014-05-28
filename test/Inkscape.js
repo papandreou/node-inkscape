@@ -97,4 +97,25 @@ describe('Inkscape', function () {
 
         inkscape.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
     });
+
+    it('should emit a single error if an invalid command line is specified', function (done) {
+        var inkscape = new Inkscape(['-vqve']),
+            seenError = false;
+
+        inkscape.on('error', function (err) {
+            expect(inkscape.commandLine, 'to match', /inkscape -vqve --without-gui -e=.*?\.png .*?\.svg$/);
+            if (seenError) {
+                done(new Error('More than one error event was emitted'));
+            } else {
+                seenError = true;
+                setTimeout(done, 100);
+            }
+        }).on('data', function (chunk) {
+            done(new Error('inkscape emitted data when an error was expected'));
+        }).on('end', function (chunk) {
+            done(new Error('inkscape emitted end when an error was expected'));
+        });
+
+        inkscape.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
+    });
 });
