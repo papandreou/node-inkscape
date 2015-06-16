@@ -1,3 +1,4 @@
+/*global describe, it, __dirname, setTimeout*/
 var expect = require('unexpected'),
     Inkscape = require('../lib/Inkscape'),
     Path = require('path'),
