@@ -2,9 +2,9 @@ node-inkscape
 =============
 
 [![NPM version](https://badge.fury.io/js/inkscape.svg)](http://badge.fury.io/js/inkscape)
-[![Build Status](https://travis-ci.org/papandreou/inkscape.svg?branch=master)](https://travis-ci.org/papandreou/inkscape)
-[![Coverage Status](https://coveralls.io/repos/papandreou/inkscape/badge.svg)](https://coveralls.io/r/papandreou/inkscape)
-[![Dependency Status](https://david-dm.org/papandreou/inkscape.svg)](https://david-dm.org/papandreou/inkscape)
+[![Build Status](https://travis-ci.org/papandreou/node-inkscape.svg?branch=master)](https://travis-ci.org/papandreou/node-inkscape)
+[![Coverage Status](https://coveralls.io/repos/papandreou/node-inkscape/badge.svg)](https://coveralls.io/r/papandreou/node-inkscape)
+[![Dependency Status](https://david-dm.org/papandreou/node-inkscape.svg)](https://david-dm.org/papandreou/node-inkscape)
 
 The inkscape command line utility as a readable/writable stream. This
 is handy for situations where you don't want to worry about writing
