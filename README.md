@@ -20,6 +20,15 @@ var Inkscape = require('inkscape'),
 sourceStream.pipe(svgToPdfConverter).pipe(destinationStream);
 ```
 
+Import type can also be fed to the constructor (converting PDF to PNG):
+
+```javascript
+var Inkscape = require('inkscape'),
+    pdfToPngConverter = new Inkscape(['--export-png', '--export-width=1024', '--import-pdf']);
+
+sourceStream.pipe(pdfToPngConverter).pipe(destinationStream);
+```
+
 Inkscape as a web service (converts to a PNG):
 
 ```javascript
