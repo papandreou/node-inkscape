@@ -40,12 +40,6 @@
     "devel": false,
 
 
-    // Legacy JS environments
-
-    // If we should warn about reserved words as property names etc
-    "es3": true,
-
-
     // ECMAScript 5
 
     // If ES5 syntax should be allowed.
