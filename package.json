@@ -11,11 +11,14 @@
     "gettemporaryfilepath": "=0.0.1"
   },
   "devDependencies": {
-    "coveralls": "2.11.2",
+    "coveralls": "2.11.9",
     "istanbul": "0.3.15",
     "jshint": "2.8.0",
-    "mocha": "2.2.5",
-    "unexpected": "8.2.0"
+    "mocha": "2.4.5",
+    "sinon": "^1.17.3",
+    "unexpected": "^10.11.1",
+    "unexpected-sinon": "^10.2.0",
+    "unexpected-stream": "^2.0.3"
   },
   "scripts": {
     "lint": "jshint .",
