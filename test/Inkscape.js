@@ -91,7 +91,7 @@ describe('Inkscape', function () {
             seenError = false;
 
         inkscape.on('error', function (err) {
-            expect(inkscape.commandLine, 'to match', /inkscape -vqve --without-gui -e=.*?\.png .*?\.svg$/);
+            expect(inkscape.commandLine, 'to match', /inkscape --without-gui -vqve -e=.*?\.png .*?\.svg$/);
             if (seenError) {
                 done(new Error('More than one error event was emitted'));
             } else {
