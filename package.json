@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "async": "=0.2.9",
-    "gettemporaryfilepath": "=0.0.1"
+    "gettemporaryfilepath": "1.0.0"
   },
   "devDependencies": {
     "coveralls": "2.11.9",
