@@ -215,36 +215,39 @@ describe('Inkscape', function () {
         });
     });
 
-    describe('when utilizing verbs', function () {
-        it('should operate in GUI mode', function () {
-            var inkscape = new Inkscape([
-                '--verb=EditDeselect',
-                '--select=layer9',
-                '--verb=SelectionUnion',
-                '--verb=EditDelete',
-                '--verb=FileSave',
-                '--verb=FileClose',
-                '--verb=FileQuit'
-            ]);
-            expect(inkscape.commandLine, 'not to contain', '--without-gui');
-        });
+    // Doesn't seem to work on Travis, probably due to no X being installed
+    if (!process.env.CI) {
+        describe('when utilizing verbs', function () {
+            it('should operate in GUI mode', function () {
+                var inkscape = new Inkscape([
+                    '--verb=EditDeselect',
+                    '--select=layer9',
+                    '--verb=SelectionUnion',
+                    '--verb=EditDelete',
+                    '--verb=FileSave',
+                    '--verb=FileClose',
+                    '--verb=FileQuit'
+                ]);
+                expect(inkscape.commandLine, 'not to contain', '--without-gui');
+            });
 
-        it('should treat the input file as the output file (assuming --verb=FileSave)', function () {
-            var inkscape = new Inkscape([
-                '--verb=EditDeselect',
-                '--select=layer9',
-                '--verb=SelectionUnion',
-                '--verb=EditDelete',
-                '--verb=FileSave',
-                '--verb=FileClose',
-                '--verb=FileQuit'
-            ]);
+            it('should treat the input file as the output file (assuming --verb=FileSave)', function () {
+                var inkscape = new Inkscape([
+                    '--verb=EditDeselect',
+                    '--select=layer9',
+                    '--verb=SelectionUnion',
+                    '--verb=EditDelete',
+                    '--verb=FileSave',
+                    '--verb=FileClose',
+                    '--verb=FileQuit'
+                ]);
 
-            return expect(
-                fs.createReadStream(pathModule.resolve(__dirname, 'test.svg')).pipe(inkscape),
-                'to yield output satisfying when decoded as', 'utf-8',
-                'to satisfy', expect.it('to begin with', '<?xml').and('to contain', '<svg').and('not to contain', 'layer9')
-            );
+                return expect(
+                    fs.createReadStream(pathModule.resolve(__dirname, 'test.svg')).pipe(inkscape),
+                    'to yield output satisfying when decoded as', 'utf-8',
+                    'to satisfy', expect.it('to begin with', '<?xml').and('to contain', '<svg').and('not to contain', 'layer9')
+                );
+            });
         });
-    });
+    }
 });
