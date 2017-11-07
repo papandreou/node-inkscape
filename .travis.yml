@@ -2,5 +2,5 @@ language: node_js
 node_js:
   - "0.10"
   - "0.12"
-before_install: "sudo add-apt-repository ppa:inkscape.dev/stable && sudo apt-get update && sudo apt-get install -y inkscape && inkscape --version"
+before_install: "sudo add-apt-repository -y ppa:inkscape.dev/stable && sudo apt-get update && sudo apt-get install -y inkscape && inkscape --version"
 script: "npm run-script travis"
