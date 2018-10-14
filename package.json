@@ -18,7 +18,7 @@
     "istanbul": "0.3.15",
     "mocha": "2.4.5",
     "prettier": "^1.14.3",
-    "sinon": "^1.17.3",
+    "sinon": "^6.3.5",
     "unexpected": "^10.11.1",
     "unexpected-sinon": "^10.2.0",
     "unexpected-stream": "^2.0.3"
