@@ -104,7 +104,7 @@ describe('Inkscape', () => {
         done(new Error('Inkscape emitted end when an error was expected'));
       });
 
-    inkscape.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
+    inkscape.end(Buffer.from('qwvopeqwovkqvwiejvq', 'utf-8'));
   });
 
   it('should emit a single error if an invalid command line is specified', done => {
@@ -133,7 +133,7 @@ describe('Inkscape', () => {
         done(new Error('inkscape emitted end when an error was expected'));
       });
 
-    inkscape.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
+    inkscape.end(Buffer.from('qwvopeqwovkqvwiejvq', 'utf-8'));
   });
 
   describe('#destroy', () => {
