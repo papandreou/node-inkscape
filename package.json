@@ -7,7 +7,7 @@
     "test": "test"
   },
   "dependencies": {
-    "async": "^0.2.9",
+    "async": "^2.6.1",
     "gettemporaryfilepath": "^1.0.0"
   },
   "devDependencies": {
@@ -46,7 +46,7 @@
   ],
   "author": "Andreas Lind <andreaslindpetersen@gmail.com>",
   "license": "BSD-3-Clause",
-    "nyc": {
+  "nyc": {
     "include": [
       "lib/**"
     ]
