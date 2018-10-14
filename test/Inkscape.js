@@ -39,7 +39,9 @@ describe('Inkscape', () => {
 
   it('the --export-plain-svg=<outputFileName> argument should be injected correctly when -l is specified', () => {
     expect(
-      new Inkscape(['-l']).inkscapeArgs.some(inkscapeArg => /^--export-plain-svg=.*\.svg$/.test(inkscapeArg)),
+      new Inkscape(['-l']).inkscapeArgs.some(inkscapeArg =>
+        /^--export-plain-svg=.*\.svg$/.test(inkscapeArg)
+      ),
       'to be truthy'
     );
   });
