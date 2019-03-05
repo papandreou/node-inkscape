@@ -95,7 +95,7 @@ describe('Inkscape', () => {
     const inkscape = new Inkscape();
 
     inkscape
-      .on('error', err => {
+      .on('error', () => {
         done();
       })
       .on('data', chunk => {
@@ -114,7 +114,7 @@ describe('Inkscape', () => {
     let seenError = false;
 
     inkscape
-      .on('error', err => {
+      .on('error', () => {
         expect(
           inkscape.commandLine,
           'to match',
