@@ -23,7 +23,7 @@
     "mocha": "^6.0.0",
     "nyc": "^14.0.0",
     "prettier": "~1.19.1",
-    "sinon": "^7.0.0",
+    "sinon": "^8.0.1",
     "unexpected": "^11.0.0",
     "unexpected-sinon": "^10.2.0",
     "unexpected-stream": "^4.0.0"
