@@ -39,7 +39,7 @@ describe('Inkscape', () => {
 
   it('the --export-plain-svg=<outputFileName> argument should be injected correctly when -l is specified', () => {
     expect(
-      new Inkscape(['-l']).inkscapeArgs.some(inkscapeArg =>
+      new Inkscape(['-l']).inkscapeArgs.some((inkscapeArg) =>
         /^--export-plain-svg=.*\.svg$/.test(inkscapeArg)
       ),
       'to be truthy'
@@ -75,14 +75,14 @@ describe('Inkscape', () => {
       inkscape
     );
 
-    return expect.promise(run => {
+    return expect.promise((run) => {
       setTimeout(
         run(() => {
           inkscape.removeListener('data', fail);
 
           inkscape.resume();
           return expect(inkscape, 'to yield output satisfying', {
-            length: expect.it('to be greater than', 0)
+            length: expect.it('to be greater than', 0),
           });
         }),
         1000
@@ -90,24 +90,24 @@ describe('Inkscape', () => {
     });
   });
 
-  it('should emit an error if an invalid image is processed', done => {
+  it('should emit an error if an invalid image is processed', (done) => {
     const inkscape = new Inkscape();
 
     inkscape
       .on('error', () => {
         done();
       })
-      .on('data', chunk => {
+      .on('data', (chunk) => {
         done(new Error('Inkscape emitted data when an error was expected'));
       })
-      .on('end', chunk => {
+      .on('end', (chunk) => {
         done(new Error('Inkscape emitted end when an error was expected'));
       });
 
     inkscape.end(Buffer.from('qwvopeqwovkqvwiejvq', 'utf-8'));
   });
 
-  it('should emit a single error if an invalid command line is specified', done => {
+  it('should emit a single error if an invalid command line is specified', (done) => {
     const inkscape = new Inkscape(['-vqve']);
 
     let seenError = false;
@@ -126,10 +126,10 @@ describe('Inkscape', () => {
           setTimeout(done, 100);
         }
       })
-      .on('data', chunk => {
+      .on('data', (chunk) => {
         done(new Error('inkscape emitted data when an error was expected'));
       })
-      .on('end', chunk => {
+      .on('end', (chunk) => {
         done(new Error('inkscape emitted end when an error was expected'));
       });
 
@@ -144,12 +144,12 @@ describe('Inkscape', () => {
           inkscape
         );
         inkscape.destroy();
-        return expect.promise(run => {
+        return expect.promise((run) => {
           setTimeout(
             run(() => {
               expect(inkscape, 'to satisfy', {
                 writeStream: expect.it('to be falsy'),
-                inkscapeProcess: expect.it('to be falsy')
+                inkscapeProcess: expect.it('to be falsy'),
               });
             }),
             10
@@ -165,7 +165,7 @@ describe('Inkscape', () => {
           inkscape
         );
 
-        return expect.promise(run => {
+        return expect.promise((run) => {
           setTimeout(
             run(function waitForWriteStream() {
               const writeStream = inkscape.writeStream;
@@ -203,7 +203,7 @@ describe('Inkscape', () => {
 
         sinon.spy(fs, 'unlink');
         return expect
-          .promise(run => {
+          .promise((run) => {
             setTimeout(
               run(function waitForInkscapeProcess() {
                 const inkscapeProcess = inkscape.inkscapeProcess;
@@ -211,7 +211,7 @@ describe('Inkscape', () => {
                   sinon.spy(inkscapeProcess, 'kill');
                   expect(inkscape.filesToCleanUp, 'to satisfy', [
                     expect.it('to be a string'),
-                    expect.it('to be a string')
+                    expect.it('to be a string'),
                   ]);
                   const filesToCleanUp = [].concat(inkscape.filesToCleanUp);
                   inkscape.destroy();
@@ -253,7 +253,7 @@ describe('Inkscape', () => {
         inkscape.pause();
         sinon.spy(fs, 'unlink');
         return expect
-          .promise(run => {
+          .promise((run) => {
             setTimeout(
               run(function waitForReadStream() {
                 const readStream = inkscape.readStream;
@@ -262,7 +262,7 @@ describe('Inkscape', () => {
                   expect(inkscape.inkscapeProcess, 'to be falsy');
                   expect(inkscape.filesToCleanUp, 'to satisfy', [
                     expect.it('to be a string'),
-                    expect.it('to be a string')
+                    expect.it('to be a string'),
                   ]);
                   const filesToCleanUp = [].concat(inkscape.filesToCleanUp);
                   inkscape.destroy();
@@ -306,7 +306,7 @@ describe('Inkscape', () => {
           '--verb=EditDelete',
           '--verb=FileSave',
           '--verb=FileClose',
-          '--verb=FileQuit'
+          '--verb=FileQuit',
         ]);
         expect(inkscape.commandLine, 'not to contain', '--without-gui');
       });
@@ -319,7 +319,7 @@ describe('Inkscape', () => {
           '--verb=EditDelete',
           '--verb=FileSave',
           '--verb=FileClose',
-          '--verb=FileQuit'
+          '--verb=FileQuit',
         ]);
 
         return expect(
