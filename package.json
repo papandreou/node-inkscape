@@ -32,7 +32,7 @@
     "lint": "eslint . && prettier --check '**/*.{js,md}'",
     "test": "mocha",
     "test:ci": "npm run coverage",
-    "coverage": "NODE_ENV=development nyc --reporter=lcov --reporter=text --all -- npm test && echo google-chrome coverage/lcov-report/index.html"
+    "coverage": "nyc --reporter=lcov --reporter=text --all -- npm test && echo google-chrome coverage/lcov-report/index.html"
   },
   "repository": {
     "type": "git",
