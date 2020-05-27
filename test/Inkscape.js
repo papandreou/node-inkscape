@@ -8,48 +8,47 @@ const pathModule = require('path');
 const fs = require('fs');
 
 describe('Inkscape', () => {
-  it('should detect the output format as png if -e or --export-png is specified', () => {
-    expect(new Inkscape(['-e']).outputFormat, 'to equal', 'png');
-    expect(new Inkscape(['--export-png']).outputFormat, 'to equal', 'png');
+  it('should detect the output format as png if --export-type=png is specified', () => {
+    expect(new Inkscape(['--export-type=png']).outputFormat, 'to equal', 'png');
   });
 
-  it('should detect the output format as pdf if -A or --export-pdf is specified', () => {
-    expect(new Inkscape(['-A']).outputFormat, 'to equal', 'pdf');
-    expect(new Inkscape(['--export-pdf']).outputFormat, 'to equal', 'pdf');
+  it('should detect the output format as pdf if --export-type=pdf is specified', () => {
+    expect(new Inkscape(['--export-type=pdf']).outputFormat, 'to equal', 'pdf');
   });
 
-  it('should detect the output format as eps if -E or --export-eps is specified', () => {
-    expect(new Inkscape(['-E']).outputFormat, 'to equal', 'eps');
-    expect(new Inkscape(['--export-eps']).outputFormat, 'to equal', 'eps');
+  it('should detect the output format as eps if --export-type=eps is specified', () => {
+    expect(new Inkscape(['--export-type=eps']).outputFormat, 'to equal', 'eps');
   });
 
-  it('should detect the output format as ps if -P or --export-ps is specified', () => {
-    expect(new Inkscape(['-P']).outputFormat, 'to equal', 'ps');
-    expect(new Inkscape(['--export-ps']).outputFormat, 'to equal', 'ps');
+  it('should detect the output format as ps if --export-type=ps is specified', () => {
+    expect(new Inkscape(['--export-type=ps']).outputFormat, 'to equal', 'ps');
   });
 
-  it('should detect the output format as svg if -l or --export-plain-svg is specified', () => {
-    expect(new Inkscape(['-l']).outputFormat, 'to equal', 'svg');
-    expect(
-      new Inkscape(['--export-plain-svg']).outputFormat,
-      'to equal',
-      'svg'
-    );
+  it('should detect the output format as svg if --export-type=svg is specified', () => {
+    expect(new Inkscape(['--export-type=svg']).outputFormat, 'to equal', 'svg');
   });
 
   it('the --export-plain-svg=<outputFileName> argument should be injected correctly when -l is specified', () => {
     expect(
-      new Inkscape(['-l']).inkscapeArgs.some((inkscapeArg) =>
-        /^--export-plain-svg=.*\.svg$/.test(inkscapeArg)
-      ),
-      'to be truthy'
+      new Inkscape(['-l']).inkscapeArgs,
+      'to contain',
+      '--export-plain-svg'
     );
+  });
+
+  it('should set default PNG arguments when non were supplied', () => {
+    const inkscape = new Inkscape();
+
+    expect(inkscape.outputFormat, 'to equal', 'png');
+    expect(inkscape.inkscapeArgs, 'to satisfy', [
+      '--export-type=png',
+      /^--export-filename=/,
+      expect.it('to be a string'),
+    ]);
   });
 
   it('should produce a PNG when run without arguments', () => {
     const inkscape = new Inkscape();
-
-    expect(inkscape.outputFormat, 'to equal', 'png');
     return expect(
       fs
         .createReadStream(pathModule.resolve(__dirname, 'test.svg'))
@@ -117,7 +116,7 @@ describe('Inkscape', () => {
         expect(
           inkscape.commandLine,
           'to match',
-          /inkscape --without-gui -vqve -e=.*?\.png .*?\.svg$/
+          /inkscape -vqve --export-type=png --export-filename=.*?\.png .*?\.svg$/
         );
         if (seenError) {
           done(new Error('More than one error event was emitted'));
