@@ -60,6 +60,20 @@ describe('Inkscape', () => {
     );
   });
 
+  it('should produce an SVG with the -l argument', () => {
+    const inkscape = new Inkscape(['-l']);
+
+    return expect(
+      fs
+        .createReadStream(pathModule.resolve(__dirname, 'test.svg'))
+        .pipe(inkscape),
+      'to yield output satisfying when decoded as',
+      'utf-8',
+      'to satisfy',
+      expect.it('to begin with', '<?xml').and('to contain', '<svg')
+    );
+  });
+
   it('should not emit data events while paused', () => {
     const inkscape = new Inkscape();
 
