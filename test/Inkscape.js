@@ -28,6 +28,14 @@ describe('Inkscape', () => {
     expect(new Inkscape(['--export-type=svg']).outputFormat, 'to equal', 'svg');
   });
 
+  it('should detect the output format as svg if --export-plain-svg is specified', () => {
+    expect(
+      new Inkscape(['--export-plain-svg']).outputFormat,
+      'to equal',
+      'svg'
+    );
+  });
+
   it('should inject --export-plain-svg argument when -l is specified', () => {
     expect(
       new Inkscape(['-l']).inkscapeArgs,
