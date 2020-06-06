@@ -324,22 +324,22 @@ describe('Inkscape', () => {
     });
   });
 
-  // Doesn't seem to work on Travis, probably due to no X being installed
-  if (!process.env.CI) {
-    describe('when utilizing verbs', () => {
-      it('should operate in GUI mode', () => {
-        const inkscape = new Inkscape([
-          '--verb=EditDeselect',
-          '--select=layer9',
-          '--verb=SelectionUnion',
-          '--verb=EditDelete',
-          '--verb=FileSave',
-          '--verb=FileClose',
-          '--verb=FileQuit',
-        ]);
-        expect(inkscape.commandLine, 'not to contain', '--without-gui');
-      });
+  describe('when utilizing verbs', () => {
+    it('should operate in GUI mode when --verb is specified', () => {
+      const inkscape = new Inkscape([
+        '--verb=EditDeselect',
+        '--select=layer9',
+        '--verb=SelectionUnion',
+        '--verb=EditDelete',
+        '--verb=FileSave',
+        '--verb=FileClose',
+        '--verb=FileQuit',
+      ]);
+      expect(inkscape.commandLine, 'to contain', '--with-gui');
+    });
 
+    // Doesn't seem to work on Travis, probably due to no X being installed
+    if (!process.env.CI) {
       it('should treat the input file as the output file (assuming --verb=FileSave)', () => {
         const inkscape = new Inkscape([
           '--verb=EditDeselect',
@@ -364,6 +364,6 @@ describe('Inkscape', () => {
             .and('not to contain', 'layer9')
         );
       });
-    });
-  }
+    }
+  });
 });
