@@ -36,6 +36,14 @@ describe('Inkscape', () => {
     );
   });
 
+  it('should reject -p argument', () => {
+    expect(
+      () => new Inkscape(['-p']).inkscapeArgs,
+      'to throw',
+      'Internal error: Unable to parse switch: -p'
+    );
+  });
+
   it('should set default PNG arguments when non were supplied', () => {
     const inkscape = new Inkscape();
 
