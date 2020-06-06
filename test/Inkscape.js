@@ -28,7 +28,7 @@ describe('Inkscape', () => {
     expect(new Inkscape(['--export-type=svg']).outputFormat, 'to equal', 'svg');
   });
 
-  it('the --export-plain-svg=<outputFileName> argument should be injected correctly when -l is specified', () => {
+  it('should inject --export-plain-svg argument when -l is specified', () => {
     expect(
       new Inkscape(['-l']).inkscapeArgs,
       'to contain',
