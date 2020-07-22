@@ -1,6 +1,6 @@
 {
   "name": "inkscape",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "The inkscape utility as a readable/writable stream",
   "main": "lib/Inkscape.js",
   "directories": {
