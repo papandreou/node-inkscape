@@ -8,6 +8,14 @@ const pathModule = require('path');
 const fs = require('fs');
 
 describe('Inkscape', () => {
+  it('should allow for explicitly specifying an export type', () => {
+    expect(new Inkscape([], 'foo').outputFormat, 'to equal', 'foo');
+  });
+
+  it('should allow for explicitly specifying an import type', () => {
+    expect(new Inkscape([], 'bar').outputFormat, 'to equal', 'bar');
+  });
+
   it('should detect the output format as png if --export-type=png is specified', () => {
     expect(new Inkscape(['--export-type=png']).outputFormat, 'to equal', 'png');
   });
