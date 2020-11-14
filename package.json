@@ -31,6 +31,7 @@
   },
   "scripts": {
     "lint": "eslint . && prettier --check '**/*.{js,md}'",
+    "prettier": "prettier --write '**/*.{js,md}'",
     "test": "mocha",
     "test:ci": "npm run coverage",
     "coverage": "nyc --reporter=lcov --reporter=text --all -- npm test && echo google-chrome coverage/lcov-report/index.html"
