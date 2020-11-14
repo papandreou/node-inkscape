@@ -24,6 +24,24 @@ describe('Inkscape', () => {
     );
   });
 
+  it('should set input/output file paths when only inputFormat is defined', () => {
+    const sut = new Inkscape([], { inputFormat: 'bar' });
+    expect(sut.inkscapeInputFilePath, 'not to equal', undefined);
+    expect(sut.inkscapeOutputFilePath, 'not to equal', undefined);
+  });
+
+  it('should set input/output file paths when only outputFormat is defined', () => {
+    const sut = new Inkscape([], { outputFormat: 'bar' });
+    expect(sut.inkscapeOutputFilePath, 'not to equal', undefined);
+    expect(sut.inkscapeInputFilePath, 'not to equal', undefined);
+  });
+
+  it('should set input/output file paths when inputFormat and outputFormat are defined', () => {
+    const sut = new Inkscape([], { outputFormat: 'bar', inputFormat: 'foo' });
+    expect(sut.inkscapeOutputFilePath, 'not to equal', undefined);
+    expect(sut.inkscapeInputFilePath, 'not to equal', undefined);
+  });
+
   it('should detect the output format as png if --export-type=png is specified', () => {
     expect(new Inkscape(['--export-type=png']).outputFormat, 'to equal', 'png');
   });
