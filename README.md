@@ -55,7 +55,9 @@ http
 
 Make sure you have node.js and npm installed, and that the `inkscape` binary is in your PATH, then run:
 
-    npm install inkscape
+```
+npm install inkscape
+```
 
 ## License
 
