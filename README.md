@@ -59,6 +59,10 @@ Make sure you have node.js and npm installed, and that the `inkscape` binary is 
 npm install inkscape
 ```
 
+## Releases
+
+[Changelog](https://github.com/papandreou/node-inkscape/blob/master/CHANGELOG.md)
+
 ## License
 
 3-clause BSD license -- see the `LICENSE` file for details.

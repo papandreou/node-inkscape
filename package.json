@@ -23,6 +23,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "mocha": "^7.0.0",
     "nyc": "^15.0.0",
+    "offline-github-changelog": "^2.0.0",
     "prettier": "~2.2.0",
     "sinon": "^9.0.0",
     "unexpected": "^12.0.0",
@@ -34,7 +35,8 @@
     "prettier": "prettier --write '**/*.{js,md}'",
     "test": "mocha",
     "test:ci": "npm run coverage",
-    "coverage": "nyc --reporter=lcov --reporter=text --all -- npm test && echo google-chrome coverage/lcov-report/index.html"
+    "coverage": "nyc --reporter=lcov --reporter=text --all -- npm test && echo google-chrome coverage/lcov-report/index.html",
+    "preversion": "offline-github-changelog --next=${npm_package_version} > CHANGELOG.md && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
